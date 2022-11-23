@@ -1,3 +1,4 @@
+
 class RecipeFood < ApplicationRecord
  belongs_to :user, foreign_key: :user_id, class_name: 'User'
  has_many :recipe_foods, foreign_key: :recipe_id, dependent: :destroy
@@ -24,3 +25,4 @@ def self.items(id)
   recipe.recipeFoods.count
 end
 end
+
