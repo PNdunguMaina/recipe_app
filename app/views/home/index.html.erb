@@ -1,0 +1,11 @@
+
+
+<% if owner_signed_in? %>
+    <div>Welcome <%= current_owner.email %></div>
+    <%= button_to "Sign out", destroy_owner_session_path, method: :delete, class:'btn-danger' %>
+<% else %>
+    <h1>Welcome to sign in page!</h1>
+    <%= link_to "Sign in", new_owner_session_path, class:'btn btn-success' %>
+<% end %>
+
+
