@@ -1,0 +1,44 @@
+<section class="body">
+    <div class="heading">
+      <h1><%=@inventory.name%></h1>
+    </div>
+
+
+    <div class="grid">
+        
+      <%= link_to new_inventory_inventory_food_path(@inventory.id), :remote => true do %>
+        <input type="button" class="btn btn-primary" value="Add Food">
+     
+      <%end%>
+
+    </div>
+
+      <hr>
+
+          <div class="table">
+      <table class="table table-bordered">
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <th>Action</th>
+      </tr>
+
+      <% @recipe.recipeFoods.each do |recipe_food| %>
+      <tr>
+        <td><%=Food.find(recipe_food.food_id).name%></td>
+        <td><%=recipe_food.quantity%> <%=Food.find(recipe_food.food_id).measurement_unit%></td>
+        <td> $<%=RecipeFood.value(recipe_food.id)%></td>
+        <td>
+        <div class="flex-btn">
+          <%= button_to "Modify", edit_recipe_recipe_food_path(recipe_food.recipe_id,recipe_food.id), html: {'data-turbo' => "false"}, :method => :get, class: "btn btn-success" %>
+          <%= button_to "Delete", recipe_recipe_food_path(recipe_food.recipe_id,recipe_food.id), html: {'data-turbo' => "false"}, :method => :delete, class: "btn btn-danger" %>
+        </div>
+       </td>
+      </tr>
+      <%end%>
+      
+      </table>
+    </div>
+    
+</section>
