@@ -1,10 +1,71 @@
-<p style="color: green"><%= notice %></p>
+<section class="body container">
+    <div class="heading d-flex justify-content-center mt-3 mb-4">
+      <h1><%=@recipe.name%></h1>
+    </div>
 
-<%= render @recipe %>
+    <div class="grid">
 
-<div>
-  <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
-  <%= link_to "Back to recipes", recipes_path %>
+      <div>
+        <p class="fs-3 mb-4 text-primary">Preparation Time: <%=@recipe.preparation_time%></p>
+        <p class="fs-3 mb-4 text-primary">Cooking Time: <%=@recipe.cooking_time%></p>
+        <p class="fs-3 mb-4">Steps go here...</p>
+      </div>
+      <h3>
+       <%if @recipe.public == false%>
+          <div class="form-check form-switch">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Public</label>
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+          </div>
+        <%else%>
+          <div class="form-check form-switch">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Public</label>  
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+          </div>
+        <%end%>
+       </h3>
 
-  <%= button_to "Destroy this recipe", @recipe, method: :delete %>
-</div>
+    </div>
+
+    <div class="grid">
+      <%= link_to general_index_path, :remote => true do %>
+      <input type="button" class="btn btn-primary" value="Generate Shopping List">
+      <%end%>
+      
+      <%= link_to new_recipe_recipe_food_path(@recipe.id), :remote => true do %>
+        <input type="button" class="btn btn-primary" value="Add Ingredients">
+
+      <%end%>
+
+    </div>
+
+      <hr>
+
+          <div class="table">
+      <table class="table table-bordered">
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <th>Action</th>
+      </tr>
+
+      <% @recipe.recipe_foods.each do |recipe_food| %>
+      <tr>
+        <td><%=Food.find(recipe_food.food_id).name%></td>
+        <td><%=recipe_food.quantity%> <%=Food.find(recipe_food.food_id).measurement_unit%></td>
+         <td> $<%=RecipeFood.value(recipe_food.id)%></td>
+        <td>
+        <div class="flex-btn">
+          <%= link_to "Modify", edit_recipe_recipe_food_path(recipe_food.recipe_id,recipe_food.id), html: {'data-turbo' => "false"}, :method => :get, class: "btn btn-success" %>
+          <%= link_to "Delete", recipe_recipe_food_path(recipe_food.recipe_id,recipe_food.id), html: {'data-turbo' => "false"}, :method => :delete, class: "btn btn-danger" %>
+        </div>
+       </td>
+      </tr>
+      <%end%>
+
+      </table>
+    </div>
+
+    </section>
+
+  </body>
