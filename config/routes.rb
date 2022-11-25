@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :recipes
+  resources :recipes, only: [:index, :new, :show, :destroy, :create] do
+    resources :recipe_foods
+    end
   devise_for :users
   resources :homes
   resources :foods
