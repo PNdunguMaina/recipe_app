@@ -19,4 +19,14 @@ Rails.application.routes.draw do
    resources :public, only: [:index]
    resources :general, only: [:index]
 
+  resources :recipes, only: [:index, :new, :show, :destroy, :create] do
+    resources :recipe_foods
+    end
+  devise_for :users
+  resources :homes
+  resources :foods
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # Defines the root path route ("/")
+  root "homes#index"
 end

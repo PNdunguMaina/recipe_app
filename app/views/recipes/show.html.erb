@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,15 +15,25 @@
 
     <section class="body">
     <div class="heading">
+=======
+<section class="body container">
+    <div class="heading d-flex justify-content-center mt-3 mb-4">
+>>>>>>> 821f7f2f4540cff94fdfd50f2ae921edfa1cb83c
       <h1><%=@recipe.name%></h1>
     </div>
 
     <div class="grid">
 
       <div>
+<<<<<<< HEAD
         <h3>Preparation Time: <%=@recipe.preparation_time%></h3>
         <h3>Cooking Time: <%=@recipe.cooking_time%></h3>
         <h3>Steps go here...</h3>
+=======
+        <p class="fs-3 mb-4 text-primary">Preparation Time: <%=@recipe.preparation_time%></p>
+        <p class="fs-3 mb-4 text-primary">Cooking Time: <%=@recipe.cooking_time%></p>
+        <p class="fs-3 mb-4">Steps go here...</p>
+>>>>>>> 821f7f2f4540cff94fdfd50f2ae921edfa1cb83c
       </div>
       <h3>
        <%if @recipe.public == false%>
@@ -41,9 +52,12 @@
     </div>
 
     <div class="grid">
+<<<<<<< HEAD
       <%= link_to general_index_path, :remote => true do %>
       <input type="button" class="btn btn-primary" value="Generate Shopping List">
       <%end%>
+=======
+>>>>>>> 821f7f2f4540cff94fdfd50f2ae921edfa1cb83c
       
       <%= link_to new_recipe_recipe_food_path(@recipe.id), :remote => true do %>
         <input type="button" class="btn btn-primary" value="Add Ingredients">
@@ -67,11 +81,19 @@
       <tr>
         <td><%=Food.find(recipe_food.food_id).name%></td>
         <td><%=recipe_food.quantity%> <%=Food.find(recipe_food.food_id).measurement_unit%></td>
+<<<<<<< HEAD
         <td> $<%=RecipeFood.value(recipe_food.id)%></td>
         <td>
         <div class="flex-btn">
           <%= button_to "Modify", edit_recipe_recipe_food_path(recipe_food.recipe_id,recipe_food.id), html: {'data-turbo' => "false"}, :method => :get, class: "btn btn-success" %>
           <%= button_to "Delete", recipe_recipe_food_path(recipe_food.recipe_id,recipe_food.id), html: {'data-turbo' => "false"}, :method => :delete, class: "btn btn-danger" %>
+=======
+         <td> $<%=RecipeFood.value(recipe_food.id)%></td>
+        <td>
+        <div class="flex-btn">
+          <%= link_to "Modify", edit_recipe_recipe_food_path(recipe_food.recipe_id,recipe_food.id), html: {'data-turbo' => "false"}, :method => :get, class: "btn btn-success" %>
+          <%= link_to "Delete", recipe_recipe_food_path(recipe_food.recipe_id,recipe_food.id), html: {'data-turbo' => "false"}, :method => :delete, class: "btn btn-danger" %>
+>>>>>>> 821f7f2f4540cff94fdfd50f2ae921edfa1cb83c
         </div>
        </td>
       </tr>
@@ -83,4 +105,7 @@
     </section>
 
   </body>
+<<<<<<< HEAD
 </html>
+=======
+>>>>>>> 821f7f2f4540cff94fdfd50f2ae921edfa1cb83c

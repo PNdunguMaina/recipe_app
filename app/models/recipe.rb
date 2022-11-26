@@ -23,4 +23,9 @@ class RecipeFood < ApplicationRecord
     recipe = Recipe.find(id)
     recipe.recipeFoods.count
   end
+class Recipe < ApplicationRecord
+  has_many :recipe_foods, dependent: :destroy
+  belongs_to :user
+
+  validates :name, presence: true
 end
