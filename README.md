@@ -24,6 +24,9 @@
 
 - $ _https://github.com/PNdunguMaina/recipe_app.git_
 - $ _cd recipe_app_
+- $ _Run bundle install_
+- $ _Run rails db:create_
+- $ _Run rails db:migrate_
 
 ## Authors
 
