@@ -1,32 +1,57 @@
-class RecipeFoodsController < ApplicationController
+class RecipeFoodsController < ActionController::Base
   def new
-    @recipe_food = RecipeFood.new
     @recipe = Recipe.find(params[:recipe_id])
-    @foods = Food.where(user_id: current_user.id)
+    @foods = Food.all
+    @recipe_food = RecipeFood.new
   end
 
   def create
-    @recipe_food = RecipeFood.new(recipe_food_params)
     @recipe = Recipe.find(params[:recipe_id])
-    @recipe_food.recipe_id = @recipe.id
-
-    if @recipe_food.save
-      flash[:success] = 'Food added successfully'
-      redirect_to recipe_path(@recipe)
-    else
-      flash.now[:error] = 'Error: Food could not be added'
-      redirect_to new_recipe_recipe_food_path(@recipe)
+    recipe_food = @recipe.recipe_foods.create(recipe_params)
+    respond_to do |format|
+      format.html do
+        if recipe_food.save
+          flash[:success] = 'Food created successfully'
+          redirect_to @recipe
+        else
+          flash.now[:error] = 'Error: Food could not be created'
+          render :new
+        end
+      end
     end
   end
 
+  def edit
+    @recipe = Recipe.find(params[:recipe_id])
+    @foods = Food.all
+    @recipe_food = RecipeFood.find(params[:id])
+  end
+
+  def update
+    @recipe_food = RecipeFood.find(params[:id])
+    if @recipe_food.update(new_params)
+      flash[:success] = 'Recipe Food updated successfully.'
+    else
+      flash[:error] = 'Something went wrong'
+    end
+    redirect_to recipe_path(@recipe_food.recipe_id)
+  end
+
   def destroy
-    RecipeFood.find(params[:id]).destroy
-    redirect_to recipe_path(params[:recipe_id])
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = RecipeFood.find(params[:id])
+    @recipe_food.destroy
+    redirect_to @recipe
+    flash[:success] = 'Food was deleted!'
   end
 
   private
 
-  def recipe_food_params
+  def recipe_params
+    params.require(:recipe_food).permit(:quantity, :food_id)
+  end
+
+  def new_params
     params.require(:recipe_food).permit(:quantity, :food_id)
   end
 end

@@ -1,0 +1,18 @@
+.modal-background {
+  visibility: hidden;
+}
+
+.modal {
+  border-radius: 15px;
+  display: flex;
+  width: 50vh;
+  height: 50vh;
+  position: fixed;
+  background-color: rgb(194, 107, 107);
+  z-index: 5;
+  flex-direction: column;
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
+}

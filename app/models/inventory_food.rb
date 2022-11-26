@@ -4,7 +4,6 @@ class InventoryFood < ApplicationRecord
 
   def self.value(id)
     inventory_food = InventoryFood.find(id)
-    # food = inventory_food.food
     inventory_food.quantity
   end
 end

@@ -1,13 +1,20 @@
-<div class="container">
-<div class="d-flex justify-content-center mt-3">
-<h1>New food</h1>
-</div>
-
-<%= render "form", food: @food %>
-
-<br>
-
-<div>
-  <%= link_to "Back to foods", foods_path, class:'btn btn-primary' %>
-</div>
-</div>
+<section class="add-food">  
+  <h1>Add a new Food</h1>
+  <%= form_with model: @food do |f| %>
+  <div class="food-c">
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true, class: "food-text"%>
+  </div>
+  <div class="food-c">
+    <%= f.label :measurement_unit %>
+    <%= f.text_field :measurement_unit, required: true, class: "food-text"%>
+  </div>
+  <div class="food-c">
+    <%= f.label :price %>
+    <%= f.number_field :price, required: true, min: 1, class: "food-text"%>
+  </div>
+  <div class="food-c">
+    <%= f.submit class: "submit-button" %>
+  </div>
+  <% end %>
+</section>

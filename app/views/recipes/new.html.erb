@@ -5,22 +5,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
 
-<<<<<<< HEAD
+  <%= render "layouts/navbar" %>
+
   <section class="body">  
   <h1>Add a new Recipe</h1>
-=======
-  <section class="body container">  
-  <h1 class="d-flex justify-content-center mt-3">Add a new Recipe</h1>
->>>>>>> 821f7f2f4540cff94fdfd50f2ae921edfa1cb83c
 
   <%= form_with model: @recipe do |f| %>
-
+  
   <div class="mb-3">
     <%= f.label :name %>
     <%= f.text_field :name, class: "form-control"%>
@@ -46,16 +44,14 @@
     <%= f.text_area :description, class: "form-control"%>
   </div>
 
-<<<<<<< HEAD
     <div class="mb-3">
-=======
-    <div class="mb-3 mt-5 d-flex justify-content-center">
->>>>>>> 821f7f2f4540cff94fdfd50f2ae921edfa1cb83c
      <%= f.submit class: "btn btn-primary" %>
      </div>
-
+  
     <% end %>
     </section>
 
   </body>
 </html>
+   
+   

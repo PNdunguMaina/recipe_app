@@ -1,30 +1,27 @@
-<%# notification %>
-<p style="color: green"><%= notice %></p>
-
-<%# display all foods %>
-
-<div id="foods" class="container">
-<div class="d-flex justify-content-end">
-<%= link_to "Add food", new_food_path, class:'btn btn-success' %>
-</div>
-    <table class="table table-bordered table-striped table-success mt-3">
-      <thead>
-        <tr>
-          <th scope="col">Food</th>
-          <th scope="col">Measurement Unit</th>
-          <th scope="col">Unit Price</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
+<section class="body">
+  <div class="add-btn">
+    <%= link_to 'foods/new', :remote => true do %>
+      <input type="button" class="btn btn-primary" value="Add Food">
+    <% end %>
+  </div>
+  <div class= "table">
+   <table class="table table-bordered">
+      <tr>
+        <th>Food</th>
+        <th>Measurement Unit</th>
+        <th>Unit Price</th>
+        <th>Action</th>
+      </tr>
       <% @foods.each do |food| %>
-        <tr>
-          <td><%= food.name %></td>
-          <td><%= food.measurement_unit %></td>
-          <td>$ <%= food.price %></td>
-          <td>  <%= link_to 'Delete', food_path(id: food.id), data: { turbo_method: :delete } %></td>
-        </tr> 
+      <tr>
+        <td><%=food.name%></td>
+        <td><%=food.measurement_unit%></td>
+        <td><%=food.price%>$</td>
+        <td>
+          <%= button_to "Delete", food_path(food.id), :method => :delete, class: "btn btn-danger" %>
+        </td>
+      </tr>
       <% end %>
-      </tbody>
     </table>
-</div>
+  </div>
+</section>
