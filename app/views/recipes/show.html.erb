@@ -27,7 +27,10 @@
     </div>
 
     <div class="grid">
-      
+      <%= link_to new_recipe_recipe_food_path(@recipe.id), :remote => true do %>
+        <input type="button" class="btn btn-primary" value="Generate shopping list">
+
+      <%end%>
       <%= link_to new_recipe_recipe_food_path(@recipe.id), :remote => true do %>
         <input type="button" class="btn btn-primary" value="Add Ingredients">
 
