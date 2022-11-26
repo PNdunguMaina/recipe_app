@@ -1,0 +1,30 @@
+<%# notification %>
+<p style="color: green"><%= notice %></p>
+
+<%# display all foods %>
+
+<div id="foods" class="container">
+<div class="d-flex justify-content-end">
+<%= link_to "Add food", new_food_path, class:'btn btn-success' %>
+</div>
+    <table class="table table-bordered table-striped table-success mt-3">
+      <thead>
+        <tr>
+          <th scope="col">Food</th>
+          <th scope="col">Measurement Unit</th>
+          <th scope="col">Unit Price</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @foods.each do |food| %>
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.measurement_unit %></td>
+          <td>$ <%= food.price %></td>
+          <td>  <%= link_to 'Delete', food_path(id: food.id), data: { turbo_method: :delete } %></td>
+        </tr> 
+      <% end %>
+      </tbody>
+    </table>
+</div>
