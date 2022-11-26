@@ -35,6 +35,7 @@
 👤 **Nonhlanhla**
 
 - GitHub: [@29td](https://github.com/29td)
+- LinkedIn: [Nonhlanhla Mndebele](https://www.linkedin.com/in/nonhlanhla-mndebele/)
 
 ## 🤝 Contributing
 
