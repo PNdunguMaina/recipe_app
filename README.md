@@ -31,11 +31,13 @@
 
 - GitHub: [@PNdunguMaina](https://github.com/PNdunguMaina)
 - LinkedIn: [Patrick Maina](https://www.linkedin.com/in/pndungumaina/)
+- Twitter: [@ndunguwamaina_](https://twitter.com/ndunguwamaina_)
 
 👤 **Nonhlanhla**
 
 - GitHub: [@29td](https://github.com/29td)
 - LinkedIn: [Nonhlanhla Mndebele](https://www.linkedin.com/in/nonhlanhla-mndebele/)
+- Twitter: [@NonhlanhlaMnde6](https://twitter.com/NonhlanhlaMnde6)
 
 ## 🤝 Contributing
 
