@@ -12,44 +12,13 @@
   </head>
 
   <body>
-  <% if user_signed_in? %>
-  <nav class="navbar navbar-expand-lg navbar-light bg-info">
-  <div class="container-fluid">
-    <a class="navbar-brand fs-3" href="#">Recipe App</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav fs-5">
-        <li class="nav-item">
-          <%= link_to 'Public Recipes', public_recipes_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'My Recipes', recipes_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Foods', foods_path, class: 'nav-link' %>
-        </li>
-      </ul>
-      <ul class="navbar-nav ms-auto fs-5">
-        <% #  if user is signed in, show sign out link %>
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Welcome <%= current_user.name %></a>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Sign Out', destroy_user_session_path, class: 'btn btn-danger', data: { turbo_method: :delete } %> 
-          </li>
-        <% # if user is not signed in, show sign in link %>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to 'Sign In', new_user_session_path, class: 'nav-link btn btn-primary' %>
-          </li>
-        <% end %>
-    </div>
-  </div>
-</nav>
-<% end %>
+
+    <%= render 'layouts/nav' %>
+
     <%= yield %>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
